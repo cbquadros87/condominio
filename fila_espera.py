@@ -1,2 +1,38 @@
 from apartamento import *
 
+class Fila:
+
+    def __init__(self):
+        self.inicio = None
+        self.fim = None
+        self.tamanho = 0
+
+    def adicionar(self, apartamento):
+        if self.fim is None:
+            self.inicio = apartamento
+        else:
+            self.fim.proximo = apartamento
+        self.fim = apartamento
+        self.tamanho += 1
+
+    def remover(self):
+        if self.tamanho > 0:
+            self.inicio = self.inicio.proximo
+            self.tamanho -= 1
+            if self.tamanho == 0:
+                self.fim = None
+        else:
+            print("A lista está vazia.")
+
+    def imprimir(self):
+        if self.tamanho == 0:
+            print("A lista está vazia.")
+        else:
+            numero_elementos = 1
+            auxiliar = self.inicio
+            print("FILA DE ESPERA POR VAGA NA GARAGEM")
+            while auxiliar:
+                print(f"Posição {numero_elementos}: {auxiliar}")
+                auxiliar = auxiliar.proximo
+                numero_elementos += 1
+            print(f"{self.tamanho} elemento(s) na lista.")
