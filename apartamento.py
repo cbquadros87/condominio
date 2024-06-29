@@ -39,17 +39,24 @@ class Apartamento:
             try:
                 num = int(input("Informe o número do apartamento: "))
                 if num in numeros_apartamentos:
-                    self.__numero = num
-                    break
+                    if num in self.__torre.apartamentos:
+                        print("Esta torre já possui este apartamento cadastrado.")
+                    else:
+                        self.__numero = num
+                        break
                 else:
                     print("Número de apartamento inválido. Por favor, escolha um número de apartamento existente.")
             except ValueError:
                 print("Por favor, digite um número válido.")
 
     def _set_torre(self):
-        print("Lista de torres cadastradas.")
+        print("-" * 45)
+        print("LISTA DE TORRES CADASTRADAS.")
+        print("-" * 45)
+        indice = 1
         for torre in torres:
-            print(torre)
+            print(f"TORRE {indice}: {torre}. \n")
+            indice += 1
         while True:
             try:
                 idTorre = int(input("Digite o ID da torre que deverá receber o apartamento."))
@@ -62,11 +69,12 @@ class Apartamento:
                 print("Informe um número válido.")
 
     def cadastrar(self):
-        self._set_numero()
         self._set_torre()
+        self._set_numero()
+        self.__torre.apartamentos.append(self.__numero)
 
     def __str__(self):
-        return f"Apartamento {self.__numero}, Vaga: {self.__vaga}, Torre: {self.__torre}. ID: {self.__id}"
+        return f"Apartamento {self.__numero}, Vaga: {self.__vaga}, Torre: {self.__torre.nome}. ID: {self.__id}"
 
     def imprimir(self):
         print(self)

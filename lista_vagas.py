@@ -48,10 +48,14 @@ class Lista:
             print("A lista está vazia.")
         else:
             auxiliar = self.inicio
+            print("-" * 45)
+            print("LISTA DE APARTAMENTOS COM VAGAS DE GARAGEM: ")
+           
             while auxiliar:
                 print(auxiliar)
                 auxiliar = auxiliar.proximo
             print(f"O tamanho da lista é: {self.tamanho}")
+            print("-" * 45)
 
     def excluir(self, vaga):
         if self.inicio == None:

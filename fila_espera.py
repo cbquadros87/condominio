@@ -27,14 +27,20 @@ class Fila:
             print("A lista está vazia.")
 
     def imprimir(self):
+        print("-" * 45)
+        print("FILA DE ESPERA POR VAGA NA GARAGEM")
         if self.tamanho == 0:
             print("A lista está vazia.")
+            print("-" * 45)
+            return
         else:
             numero_elementos = 1
             auxiliar = self.inicio
-            print("FILA DE ESPERA POR VAGA NA GARAGEM")
+            
             while auxiliar:
                 print(f"Posição {numero_elementos}: {auxiliar}")
                 auxiliar = auxiliar.proximo
                 numero_elementos += 1
-            print(f"{self.tamanho} elemento(s) na lista.")
+            print(f"{self.tamanho} apartamento(s) na lista de espera.")
+            print("-" * 45)
+            return

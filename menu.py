@@ -12,12 +12,13 @@ def cadastrar_torres():
 
 def cadastrar_apartamentos():
     if len(torres) == 0:
+        print("ERRO!")
         print("Impossível cadastrar apartamentos enquanto não houverem torres cadastradas.")
         return
     else:
         novoAp = Apartamento()
         novoAp.cadastrar()
-        if novoAp.id < 4:
+        if listaVagasGaragem.tamanho < 10:
             listaVagasGaragem.adicionar(novoAp)
         else:
             filaEspera.adicionar(novoAp)
@@ -60,7 +61,7 @@ def menu():
 
     while True:
         print("=" * 30)
-        print("   MENU GERENCIADOR DO CONDOMÍNIO")
+        print("MENU GERENCIADOR DO CONDOMÍNIO")
         print("=" * 30)
         print("Selecione uma opção:")
         print("1. Cadastrar Torres")

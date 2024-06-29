@@ -8,6 +8,7 @@ class Torre:
         self.__id = Torre.idContador
         self.__nome = None
         self.__endereco = None
+        self.apartamentos = []
         Torre.idContador += 1
 
     @property
@@ -22,9 +23,13 @@ class Torre:
     def endereco(self):
         return self.__endereco
     
+    @property
+    def listaApartamentos(self):
+        return self.apartamentos
+    
     def _set_nome(self):
         while True:
-            nome = input("Qual o nome da Torre cadastrada?").strip()
+            nome = input("Qual o nome da Torre cadastrada? ").strip()
             if nome:
                 self.__nome = nome
                 break
@@ -33,7 +38,7 @@ class Torre:
 
     def _set_endereco(self):
         while True:
-            end = input("Qual o endereço da torre cadastrada?").strip()
+            end = input("Qual o endereço da torre cadastrada? ").strip()
             if end:
                 self.__endereco = end
                 break
