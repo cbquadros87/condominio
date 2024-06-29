@@ -4,19 +4,15 @@ numeros_apartamentos = [101, 102, 103, 104, 201, 202, 203, 204, 301, 302, 303, 3
 
 class Apartamento:
 
-    id = 1
+    idContador = 1
 
     def __init__(self):
-        self.__id = Apartamento.id
+        self.__id = Apartamento.idContador
         self.__numero = None
         self.__torre = None
         self.__vaga = None
-        self.proximo = None
-        
-        if self.__id < 11:
-            self.__vaga = self.__id
-        
-        Apartamento.id += 1
+        self.proximo = None        
+        Apartamento.idContador += 1
 
     @property
     def id(self):
@@ -33,6 +29,10 @@ class Apartamento:
     @property
     def vaga(self):
         return self.__vaga
+    
+    @vaga.setter
+    def vaga(self, vaga):
+        self.__vaga = vaga
     
     def _set_numero(self):
         while True:
@@ -53,7 +53,7 @@ class Apartamento:
         while True:
             try:
                 idTorre = int(input("Digite o ID da torre que deverá receber o apartamento."))
-                if idTorre > 0 and idTorre < len(torres):
+                if idTorre > 0 and idTorre <= len(torres):
                     self.__torre = torres[idTorre - 1]
                     break
                 else:

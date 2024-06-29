@@ -17,7 +17,9 @@ class Fila:
 
     def remover(self):
         if self.tamanho > 0:
-            self.inicio = self.inicio.proximo
+            auxiliar = self.inicio
+            self.inicio = auxiliar.proximo
+            auxiliar.proximo = None
             self.tamanho -= 1
             if self.tamanho == 0:
                 self.fim = None

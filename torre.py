@@ -2,13 +2,13 @@ torres = []
 
 class Torre:
 
-    id = 1
+    idContador = 1
 
     def __init__(self):
-        self.__id = Torre.id
+        self.__id = Torre.idContador
         self.__nome = None
         self.__endereco = None
-        Torre.id += 1
+        Torre.idContador += 1
 
     @property
     def id(self):

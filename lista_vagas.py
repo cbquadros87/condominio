@@ -27,6 +27,8 @@ class Lista:
                 apartamento.vaga = 1
                 apartamento.proximo = aux
                 self.inicio = apartamento
+                self.tamanho += 1
+                return
             while auxiliar:
                 if anterior.vaga - auxiliar.vaga != -1:
                     anterior.proximo = apartamento
@@ -58,17 +60,21 @@ class Lista:
             if self.inicio.vaga == vaga:
                 self.inicio.vaga = None
                 self.inicio.proximo = None
+                apExcluido = self.inicio
                 self.inicio = None
                 self.tamanho -= 1
+                return apExcluido
             else:
                 print("O ID informado não foi localizado.")
         else:
             if self.inicio.vaga == vaga:
+                auxiliar = self.inicio.proximo
                 self.inicio.vaga = None
                 self.inicio.proximo = None
-                auxiliar = self.inicio.proximo
+                apExcluido = self.inicio
                 self.inicio = auxiliar
                 self.tamanho -= 1
+                return apExcluido
             else:
                 anterior = self.inicio
                 auxiliar = anterior.proximo
@@ -78,7 +84,7 @@ class Lista:
                         anterior.proximo = auxiliar.proximo
                         auxiliar.proximo = None
                         self.tamanho -= 1
-                        break
+                        return auxiliar
                     else:
                         anterior = auxiliar
                         auxiliar = anterior.proximo
