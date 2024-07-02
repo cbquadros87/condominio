@@ -7,41 +7,31 @@ class Lista:
         self.tamanho = 0
 
     def adicionar(self, apartamento):
-        if self.inicio == None:
+        if self.inicio is None:
             self.inicio = apartamento
             apartamento.vaga = 1
-        elif self.tamanho == 1:
-            if self.inicio.vaga > 1:
-                auxiliar = self.inicio
-                apartamento.vaga = 1
-                apartamento.proximo = auxiliar
+            
+        else:
+            anterior = None
+            atual = self.inicio
+            vaga = 1
+            
+            while atual is not None and atual.vaga == vaga:
+                anterior = atual
+                atual = atual.proximo
+                vaga += 1
+            
+            apartamento.vaga = vaga
+            
+            if anterior is None:
+                apartamento.proximo = self.inicio
                 self.inicio = apartamento
             else:
-                apartamento.vaga = 2
-                self.inicio.proximo = apartamento
-        else:
-            anterior = self.inicio
-            auxiliar = anterior.proximo
-            if anterior.vaga > 1:
-                aux = self.inicio
-                apartamento.vaga = 1
-                apartamento.proximo = aux
-                self.inicio = apartamento
-                self.tamanho += 1
-                return
-            while auxiliar:
-                if anterior.vaga - auxiliar.vaga != -1:
-                    anterior.proximo = apartamento
-                    apartamento.vaga = anterior.vaga + 1
-                    apartamento.proximo = auxiliar
-                    break
-                else:
-                    anterior = auxiliar
-                    auxiliar = anterior.proximo
-            if not auxiliar:
+                apartamento.proximo = anterior.proximo
                 anterior.proximo = apartamento
-                apartamento.vaga = anterior.vaga + 1
+        
         self.tamanho += 1
+
 
     def imprimir(self):
         if self.inicio == None:
