@@ -33,17 +33,14 @@ def liberar_vaga():
     while True:
         try:
             vagaExcluida = int(input("Informe o número da vaga que será liberada: "))
-            if vagaExcluida > 0 and vagaExcluida < 11:
+            if 1 <= vagaExcluida <= 10:
                 vagaOcupada = False
+                auxiliar = listaVagasGaragem.inicio
                 while auxiliar:
-                    anterior = listaVagasGaragem.inicio
-                    auxiliar = anterior.proximo
-                    if anterior.vaga == vagaExcluida:
+                    if auxiliar.vaga == vagaExcluida:
                         vagaOcupada = True
                         break
-                    else:
-                        anterior = auxiliar
-                        auxiliar = anterior.proximo
+                    auxiliar = auxiliar.proximo 
                 if vagaOcupada:
                     break
                 else:
